@@ -110,5 +110,34 @@ public class StatSet  {
 		Debug.LogError ("ERROR: STAT CALLED, NOT FOUND.");
 		return 0;
 	}
+
+    public string toString()
+    {
+        string returnable = "";
+        for (int i = 0 ; i < statTypes.Count ; i++)
+        {
+            returnable += statTypes.ToArray()[i] + ",";
+            returnable += baseStat[i] + ",";
+            returnable += stat[i];
+            returnable += ":";
+        }
+        return returnable;
+    }
+
+    public void loadStats(string statString)
+    {
+        int i = 0;
+        foreach (string statParse in statString.Split(':'))
+        {
+            string[] parsed = statParse.Split(',');
+            stat[i] = int.Parse(parsed[1]);
+            baseStat[i] = int.Parse(parsed[2]);
+            i++;
+        }
+
+    }
+
+
+
 }
 

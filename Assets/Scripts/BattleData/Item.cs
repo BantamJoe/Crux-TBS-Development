@@ -6,12 +6,12 @@ public class Item : MonoBehaviour {
 	public string name, desc;
 	public string icon;
 	public string itemType;
-	int price;
-	bool consumable, consumed;
-	bool useableOutsideBattle;
-	string scope; //(Target, All Allies, All Enemies, Self)
+	public int price;
+	public bool consumable, consumed;
+	public bool useableOutsideBattle;
+	public string scope; //(Target, All Allies, All Enemies, Self)
 	//DAMAGE FORMULA
-	List<Effect> useEffects;
+	public List<Effect> useEffects;
 	
 	public Item()
 	{

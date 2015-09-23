@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class BattleActor : MonoBehaviour {
+public class BattleActor : Actor {
 
 
 	//Basic GameObject Information
 	public GameObject navPoint;
-
+    
 
 	//Battle Stats
-	StatSet stats;
+	public StatSet stats;
 
 	//Status Effect tracker
 	List<Status> statusEffects;
@@ -260,6 +260,12 @@ public class BattleActor : MonoBehaviour {
 			stats.modifyBaseStat("Health", -stats.getStat("Health"));
 		}
 	}
+
+    public float getMaxJump()
+    {
+        return Database.Formula().statSetParse(stats, Database.Formula().maxJumpFormula);
+    }
+
 }
 
 

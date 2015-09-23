@@ -96,7 +96,7 @@ public class StatusDatabase : BaseDatabase{
 }
 
 [Serializable]
-class StatusData
+public class StatusData
 {
 	public string _name;
 	public string _desc;

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 public class Equipment : Item {
 
-	string equipmentType;
+	public string equipmentType;
 	public string equipmentPosition;
 
-	List<Status> effects;
+	public List<Status> effects;
 
-	List<string> requirements;
+	public List<string> requirements;
 
 	public Equipment()
 	{
