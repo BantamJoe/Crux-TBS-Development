@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 
 
-public class Chunk {
+public class Chunk : MonoBehaviour {
 
     int chunkWidth, chunkHeight;
 
     public Tile[,,] chunkTiles;
     public List<Actor> actorList;
 
-    public Chunk()
+    public void Start()
     {
         chunkWidth = Database.Definitions().chunkWidth;
         chunkHeight = Database.Definitions().chunkHeight;

@@ -45,6 +45,8 @@ public class Database {
         playerDatabase = new PlayerDatabase();
         skillDatabase = new SkillDatabase();
         statusDatabase = new StatusDatabase();
+        gameManager = new CruxGameManager();
+        battleManager = new BattleManager();
 }
 	
 	public static Database getDatabase()

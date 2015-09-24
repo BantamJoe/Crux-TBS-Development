@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 
 public class Skill 
 {
@@ -87,6 +87,11 @@ public class Skill
 
 		target.addStatus (effect);
 	}
+
+    public Sprite getIcon()
+    {
+        return (Sprite)Resources.Load(icon);
+    }
 
 }
 

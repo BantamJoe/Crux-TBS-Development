@@ -13,11 +13,14 @@ public class BattleManager : MonoBehaviour {
 
     bool myTurn;
 
-    public void setUp()
+    public BattleManager()
     {
         myTurn = false;
         currentChunk = Database.GameManager().currentChunk;
         player = Database.GameManager().player;
+        battleList = new List<BattleActor>();
+        turnOrder = new List<BattleActor>();
+
     }
 
     public void AddBattleActor(BattleActor _battleActor)

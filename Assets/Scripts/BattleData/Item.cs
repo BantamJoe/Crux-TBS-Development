@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 public class Item : MonoBehaviour {
 
@@ -65,6 +67,13 @@ public class Item : MonoBehaviour {
 	{
 		return true;
 	}
+
+    public Sprite getIcon()
+    {
+        return (Sprite)Resources.Load(icon);
+    }
+
+    
 }
 
 

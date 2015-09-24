@@ -12,9 +12,14 @@ public class Actor : MonoBehaviour {
     public bool walkable = false;
     public int walkableDifficulty;
 
-    public Actor()
+    void Start()
     {
         determineMyLocation();
+    }
+
+    public Actor()
+    {
+        
         if (walkableDifficulty == 0)
         {
             walkableDifficulty = 999;

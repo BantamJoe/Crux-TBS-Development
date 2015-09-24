@@ -57,22 +57,7 @@ public class ChunkDatabase : BaseDatabase
         chunks.Add(chunk);
     }
 
-    public Equipment createEquipment(string _name,
-     string _desc,
-     string _icon,
-     int _price,
-     bool _consumable, bool _consumed,
-     bool _useableOutsideBattle,
-     string _scope,
-     List<EffectData> _useEffects,
-     string equipmentType,
-     string equipmentPosition,
-    List<StatusData> effects,
-    List<string> requirements)
-    {
-        //TO DO
-        return new Equipment();
-    }
+    
 
     public Chunk getChunkAtIndex(int index)
     {

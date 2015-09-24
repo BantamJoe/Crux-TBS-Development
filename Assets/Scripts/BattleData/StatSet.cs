@@ -11,6 +11,7 @@ public class StatSet  {
 
 	public StatSet()
 	{
+        statTypes = new List<string>();
 		//baseStat (Health) = Max Health.
 		//Stat(health) = current.
 		statTypes.Add ("Health");
@@ -75,8 +76,19 @@ public class StatSet  {
 
 	public int getStat(string _stat)
 	{
-
-		return stat[getIndexof(_stat)];
+        if (_stat == "currentHealth")
+            return stat[0];
+        else if (_stat == "maxHealth")
+            return baseStat[0];
+        else if (_stat == "currentMana")
+            return stat[1];
+        else if (_stat == "maxMana")
+            return baseStat[1];
+        else if (_stat == "currentStamina")
+            return stat[2];
+        else if (_stat == "maxStamina")
+            return baseStat[2];
+        return stat[getIndexof(_stat)];
 	}
 
 	public int getBaseStat(string _stat)
@@ -104,10 +116,11 @@ public class StatSet  {
 
 	int getIndexof(string _stat)
 	{
+
 		for (int i = 0; i < statTypes.Count; i++)
 			if (statTypes.ToArray () [i].Equals (_stat))
 				return i;
-		Debug.LogError ("ERROR: STAT CALLED, NOT FOUND.");
+		Debug.LogError ("ERROR: STAT CALLED, NOT FOUND. STAT: " + _stat);
 		return 0;
 	}
 

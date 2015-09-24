@@ -35,7 +35,7 @@ public class BattleActor : Actor {
 		skillsKnown = new List<Skill> ();
 		skillsEquipped = new List<Skill> ();
 		inventory = new List<Item> ();
-
+        stats = new StatSet();
 	}
 	
 	public int getStat(string _stat)

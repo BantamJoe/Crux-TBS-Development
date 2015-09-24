@@ -149,13 +149,13 @@ public class FormulaDatabase : MonoBehaviour {
 		{	
 			if(element.StartsWith("caster"))
 			{
-				Debug.Log(element.Substring(6, element.Length-6));
-				parsable += caster.getStat(element.Substring(6, element.Length-6));
+				//Debug.Log(element.Substring(6, element.Length-7));
+				parsable += caster.getStat(element.Substring(7, element.Length-7));
 			}
 			else if(element.StartsWith("target"))
 			{
-				Debug.Log(element.Substring(6, element.Length-6));
-				parsable += caster.getStat(element.Substring(6, element.Length-6));
+				//Debug.Log(element.Substring(6, element.Length-6));
+				parsable += caster.getStat(element.Substring(7, element.Length-7));
 			}
 			else
 				parsable+= element;
@@ -169,10 +169,10 @@ public class FormulaDatabase : MonoBehaviour {
 		string[] form = formula.Split (' ');
 		foreach (string element in form) 
 		{	
-			if(element.StartsWith("caster"))
+			if(element.StartsWith("caster."))
 			{
-				Debug.Log(element.Substring(6, element.Length-6));
-				parsable += statSet.getStat(element.Substring(6, element.Length-6));
+				//Debug.Log(element.Substring(7, element.Length-7));
+				parsable += statSet.getStat(element.Substring(7, element.Length-7));
 			}
 			else
 				parsable+= element;

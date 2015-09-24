@@ -6,10 +6,10 @@ public class CruxGameManager : MonoBehaviour {
     public Player player;
     string GameState;
     public Chunk currentChunk;
-    //public BattleManager battleManager;
+    public UIManager uiManager;
     
 	// Use this for initialization
-	void Start () {
+	public CruxGameManager () {
         GameState = "Exploration";
         
 	}
@@ -38,22 +38,35 @@ public class CruxGameManager : MonoBehaviour {
     public void StartBattle(Actor instigator)
     {
         GameState = "Battle";
+        foreach (BattleActor actor in currentChunk.getActorsWithinRange
+                (instigator.getMyLocation(), 5f))
+        {
+            Database.BattleManager().AddBattleActor(actor);
+        }
+        Database.BattleManager().determineTurnOrder();
+        uiManager.startBattle();
+        uiManager.updateUI();
+
     }
 
     public void endBattle()
     {
+        uiManager.endBattle();
+        Database.BattleManager().clearBattleInformation();
         GameState = "Exploration";
     }
 
-    public void input(int input)
+    public void directionalInput(int input)
     {
-        if (GameState.Equals("Battle"))
+        Debug.Log(input + " " + GameState);
+        if (GameState == "Battle")
         {
             //SEND TO BATTLE MANAGER
         }
-        if (GameState.Equals("Exploration"))
+        if (GameState== "Exploration")
         {
-            //SEND TO EXPLORATION MANAGER
+            //TODO: Thsi should go to the exploration manager
+            determineMove(input, true);
         }
 
     }
@@ -86,6 +99,7 @@ public class CruxGameManager : MonoBehaviour {
         {
             for (int i = (int)player.getBattleActor().getMaxJump() ; i > (0 - (int)player.getBattleActor().getMaxJump()) ; i--)
             {
+                currentChunk.ToString();
                 if (destVec.y + i >= 0 && currentChunk.isValidMoveWalking((destVec + new Vector3(0, i, 0))))
                 {
                     destVec.y += i;
