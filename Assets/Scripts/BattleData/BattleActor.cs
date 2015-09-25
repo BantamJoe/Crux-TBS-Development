@@ -74,7 +74,10 @@ public class BattleActor : Actor {
 	void updateStats(string trigger)
 	{
 		stats.resetStats ();
-		//EQUIPMENT
+        foreach (Equipment equip in equipment)
+        {
+            equip.resolveStatus(this);
+        }
 
 		foreach (Status stateff in statusEffects) {
 			stateff.resolveStatus(this, trigger);
@@ -173,6 +176,7 @@ public class BattleActor : Actor {
 		if (equip.canUse (this)) {
 			removeEquipment (equip.getEquipmentPosition ());
 			equipment.Add (equip);
+            Debug.Log("CHECKING EQUIPMENT UPDATES");
 			updateStats ();
 		}
 	}

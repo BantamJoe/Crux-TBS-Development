@@ -60,7 +60,6 @@ public class CharacterPanel : MonoBehaviour {
 
 	void updateStatsList()
 	{
-
 		string _stats = "";
 		_stats += "Control: ";
 		_stats += actor.getStat ("control");

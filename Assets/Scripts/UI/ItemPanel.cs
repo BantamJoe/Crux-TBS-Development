@@ -12,8 +12,8 @@ public class ItemPanel : MonoBehaviour {
 	
 	void Start()
 	{
-		item = new Item();
-		item.name = "NOTHING";
+//		item = new Item();
+//		item.name = "NOTHING";
 	}
 
 	public void setItem(Item _item)
@@ -73,8 +73,7 @@ public class ItemPanel : MonoBehaviour {
 	}
 
 	public void useItem()
-	{	
-
+	{
 		if (item.getItemType ().Equals ("Equipment")) {
 						Equipment testEquip;
 						testEquip = item as Equipment;

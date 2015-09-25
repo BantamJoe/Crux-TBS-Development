@@ -79,7 +79,7 @@ public class Effect {
 	{
 
 		if (!modifyStatFormula.Equals ("")) {
-
+            Debug.Log("MODIFYING STAT " + modifyStat + " WITH FORMULA " + modifyStatFormula);
 			target.modifyStat(modifyStat, Database.Formula().damageParse(caster, target, modifyStatFormula));
 		}
 		

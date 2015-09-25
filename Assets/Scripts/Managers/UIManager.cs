@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
         battleManager = Database.BattleManager();
         player = gameManager.player;
         gameManager.uiManager = this;
+        setUp();
         updateUI();
     }
 
@@ -59,14 +60,14 @@ public class UIManager : MonoBehaviour
         movementPanel.gameObject.SetActive(true);
     }
 
-    public void setUp(CruxGameManager _gameManager)
+    public void setUp()
     {
+        Debug.Log("SETUP RUNNING");
         selectionPrefab.setManager(this);
         setSelectionMode(false);
         skillSelected = -1;
         selectionConfirmButton.SetActive(false);
         selectorObject.SetActive(false);
-        gameManager = _gameManager;
     }
 
     public void updateUI()
@@ -174,13 +175,11 @@ public class UIManager : MonoBehaviour
 
     public void selectionConfirmPressed()
     {
-        Debug.Log("SelectionConfirmStarted");
 
         if (battleManager.useSkill(selectionPrefab.getLocation(), player.getBattleActor().getEquippedSkills().ToArray()[skillSelected]))
         {
             setSelectionMode(false);
         }
-        Debug.Log("SelectionConfirmPressed");
         updateUI();
     }
 

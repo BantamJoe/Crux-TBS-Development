@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/*************************************************
+    The Equipment class holds all data for any item that can be equipped.
+    Note that equipment must have an EQUIPMENTPOSITION equal to one of the
+    positions defined in the DefinitionsDatabase, or it will be unuseable.
+
+    */
 public class Equipment : Item {
 
 	public string equipmentType;
@@ -55,10 +61,30 @@ public class Equipment : Item {
 
 	public void useItem(BattleActor target)
 	{
-		
-	}
+        if (target.isEquipped(this))
+        {
+            target.removeEquipment(this);
+            return;
+        }
+        if (canUse(target))
+        {
+            target.addEquipment(this);
+        }
+        
+    }
 
-	public string getItemType()
+
+    public void resolveStatus(BattleActor actor)
+    {
+        Debug.Log("RESOLVE STATUS: EQUIP" + effects.Count);
+        foreach (Status stateff in effects)
+        {
+            stateff.resolveStatus(actor, "Equipment");
+        }
+    }
+
+
+    public string getItemType()
 	{
 		return "equipment";
 	}

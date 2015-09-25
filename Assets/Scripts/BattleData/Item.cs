@@ -70,7 +70,8 @@ public class Item : MonoBehaviour {
 
     public Sprite getIcon()
     {
-        return (Sprite)Resources.Load(icon);
+        return  (Sprite)Resources.Load(icon, typeof(Sprite));
+
     }
 
     

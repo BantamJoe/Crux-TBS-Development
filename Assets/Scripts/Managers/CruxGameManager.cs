@@ -37,6 +37,9 @@ public class CruxGameManager : MonoBehaviour {
 
     public void StartBattle(Actor instigator)
     {
+
+        Database.BattleManager().updateBattleManagerInformation();
+
         GameState = "Battle";
         foreach (BattleActor actor in currentChunk.getActorsWithinRange
                 (instigator.getMyLocation(), 5f))
@@ -58,9 +61,10 @@ public class CruxGameManager : MonoBehaviour {
 
     public void directionalInput(int input)
     {
-        Debug.Log(input + " " + GameState);
         if (GameState == "Battle")
         {
+            Database.BattleManager().determineMove(input, true);
+            uiManager.updateUI();
             //SEND TO BATTLE MANAGER
         }
         if (GameState== "Exploration")

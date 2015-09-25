@@ -79,9 +79,10 @@ public class Skill
 	public void useSkill(BattleActor caster, BattleActor target)
 	{
 		foreach (string cost in costs) {
-			caster.modifyStat(cost.Split(':')[0], int.Parse(cost.Split(':')[1]));
+            caster.modifyStat(cost.Split(':')[0],   0-int.Parse(cost.Split(':')[1]));
 		}
 		if (Random.Range (0, 100) > successRate) {
+            Debug.Log("SKILL FAILED");
 			return; //Skill failed. 
 		}
 
@@ -90,7 +91,7 @@ public class Skill
 
     public Sprite getIcon()
     {
-        return (Sprite)Resources.Load(icon);
+        return (Sprite)Resources.Load(icon, typeof (Sprite));
     }
 
 }

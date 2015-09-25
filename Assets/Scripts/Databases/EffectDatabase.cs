@@ -28,7 +28,7 @@ public class EffectDatabase : BaseDatabase{
 			{
 				effects.Add(createEffect(_data._name, _data._addStatus, _data._keyNote, _data._modifyStat, 
 				                         _data._modifyStatFormula, _data._valueLocked));
-			}
+            }
 			//			effects = data.effects;
 			file.Close();
 		}

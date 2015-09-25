@@ -2,6 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*************************************************
+    The StatSet class holds variables related to stats.
+    The stats it holds is pulled from the Definitions database,
+    with the addition of health, mana, and stamina being added
+    as the first three elements.
+    */
+
 public class StatSet  {
 	//baseStat[0] and stat[0] match up to statTypes[0]
 	public List<string> statTypes;
@@ -47,7 +54,7 @@ public class StatSet  {
 			stat[1] = (int) ((float)stat[1] / tempMax * baseStat[1]);
 		}
 		//Calculate Stamina
-		tempMax = baseStat [0];
+		tempMax = baseStat [2];
 		baseStat [2] = Database.Formula ().statSetParse (this, Database.Formula ().maxStaminaFormula);
 		if (tempMax != 0) {
 			stat[2] = (int) ((float)stat[2] / tempMax * baseStat[2]);
@@ -98,7 +105,7 @@ public class StatSet  {
 
 	public void resetStats()
 	{
-		for(int i = 0; i < statTypes.Count; i++)
+		for(int i = 3; i < statTypes.Count; i++)
 		{
 			stat[i] = baseStat[i];
 		}
@@ -106,18 +113,33 @@ public class StatSet  {
 
 	public void modifyStat(string _stat, int modifyBy)
 	{
-		stat[getIndexof(_stat)] += modifyBy;
+        //Debug.Log("MODIFYING " + _stat + " BY " + modifyBy);
+
+        stat[getIndexof(_stat)] += modifyBy;
 	}
 
 	public void modifyBaseStat(string _stat, int modifyBy)
 	{
-		baseStat[getIndexof(_stat)] += modifyBy;
+        //Debug.Log("MODIFYING  BASE " + _stat + " BY " + modifyBy);
+
+        baseStat[getIndexof(_stat)] += modifyBy;
 	}
 
 	int getIndexof(string _stat)
 	{
-
-		for (int i = 0; i < statTypes.Count; i++)
+        if (_stat.ToLower() == "currenthealth")
+            return 0;
+        else if (_stat.ToLower() == "maxhealth"|| _stat.ToLower() == "maximumhealth")
+            return 0;
+        else if (_stat.ToLower() == "currentmana")
+            return 1;
+        else if (_stat.ToLower() == "maxmana" || _stat.ToLower() == "maximummana")
+            return 1;
+        else if (_stat.ToLower() == "currentstamina")
+            return 2;
+        else if (_stat.ToLower() == "maxstamina" || _stat.ToLower() == "maximumstamina")
+            return 2;
+        for (int i = 0; i < statTypes.Count; i++)
 			if (statTypes.ToArray () [i].Equals (_stat))
 				return i;
 		Debug.LogError ("ERROR: STAT CALLED, NOT FOUND. STAT: " + _stat);

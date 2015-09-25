@@ -17,7 +17,7 @@ public class Status {
 	{
 		effects = new List<int> ();
 		createStatus ("New Status", "SET A DESCRIPTON", "icons/blank", "none","none", false, 
-		              0, 0, 0, 0, null);
+		              0, 0, 0, 0, new List<int>());
 	}
 
 	public Status createStatus(string nam, string des, string _icon,
@@ -43,8 +43,7 @@ public class Status {
 
 	public void resolveStatus(BattleActor actor, string trig)
 	{
-		//Debug.Log(trig);
-		//Debug.Log (trigger);
+		//Debug.Log("TRIGGER TESTING: " + trig + " - " + trigger);
 		string[] conditions = condition.Split(' ');
 		foreach (string _condition in conditions) {
 			if(_condition.StartsWith("KEYWORD:"))
@@ -59,8 +58,9 @@ public class Status {
 		{
 			foreach(int eff in effects)
 			{
-				Database.Effects().getEffectAtIndex(eff).resolveEffect(actor);
+                Database.Effects().getEffectAtIndex(eff).resolveEffect(actor);
 			}
+            
 		}
 		if (trig.Equals ("none") && trigger.Equals ("once")) {
 			actor.queueRemoveStatus(this);		

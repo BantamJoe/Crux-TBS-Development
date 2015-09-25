@@ -23,20 +23,18 @@ public class Selector : MonoBehaviour {
 
 	public void mouseClick()
 	{
+
 		int layerMask = 1 << 9;
 		layerMask = ~layerMask;
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    
 		if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
 		{
-//			iTween.MoveTo(this.gameObject,hit.point
-//			           		- new Vector3(0f, .5f, 0f)
-//			              , .1f);
+
 			iTween.MoveTo(this.gameObject,
 			              new Vector3(Mathf.RoundToInt(hit.point.x-.1f),
 			            Mathf.RoundToInt(hit.point.y-.1f),
 			            Mathf.RoundToInt(hit.point.z-.1f))
-			              //- new Vector3(0f, .5f, 0f)
 			              , .1f);
 		}
 

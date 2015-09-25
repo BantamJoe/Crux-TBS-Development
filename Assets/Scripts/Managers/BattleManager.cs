@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+
 public class BattleManager : MonoBehaviour {
     public Player player;
 
@@ -16,11 +17,15 @@ public class BattleManager : MonoBehaviour {
     public BattleManager()
     {
         myTurn = false;
-        currentChunk = Database.GameManager().currentChunk;
-        player = Database.GameManager().player;
         battleList = new List<BattleActor>();
         turnOrder = new List<BattleActor>();
 
+    }
+
+    public void updateBattleManagerInformation()
+    {
+        currentChunk = Database.GameManager().currentChunk;
+        player = Database.GameManager().player;
     }
 
     public void AddBattleActor(BattleActor _battleActor)
@@ -145,7 +150,6 @@ public class BattleManager : MonoBehaviour {
 
     public bool useSkill(Vector3 targetPos, Skill skill)
     {
-
         if (currentChunk.getActorsAtLocation((int)targetPos.x, (int)targetPos.y, (int)targetPos.z).Count == 0
             || !skill.canCast(activeActor))
             return false;
